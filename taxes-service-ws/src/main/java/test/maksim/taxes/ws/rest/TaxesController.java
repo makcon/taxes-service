@@ -27,8 +27,8 @@ public class TaxesController {
     private final TaxesService taxesService;
 
     @PostMapping(Endpoints.CALCULATE)
-    public ListenableFuture<TaxesCalculationResponse> calculateTaxes(@RequestBody List<InputProductData> requests) {
-        log.info("Received tax calculation requests: {}", requests);
-        return serviceExecutor.submitListenable(() -> taxesService.calculateTaxes(requests));
+    public ListenableFuture<TaxesCalculationResponse> calculateTaxes(@RequestBody List<InputProductData> productDataList) {
+        log.info("Received tax calculation requests: {}", productDataList);
+        return serviceExecutor.submitListenable(() -> taxesService.calculateTaxes(productDataList));
     }
 }

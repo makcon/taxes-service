@@ -19,8 +19,8 @@ public class TaxesService {
     private final TaxesCalculator taxesCalculator;
     private final TotalPriceCalculator totalPriceCalculator;
 
-    public TaxesCalculationResponse calculateTaxes(List<InputProductData> inputProductData) {
-        List<OutputProductData> outputProductDataList = inputProductData.stream()
+    public TaxesCalculationResponse calculateTaxes(List<InputProductData> productDataList) {
+        List<OutputProductData> outputProductDataList = productDataList.stream()
                 .map(this::getOutputProductData)
                 .collect(toList());
 
