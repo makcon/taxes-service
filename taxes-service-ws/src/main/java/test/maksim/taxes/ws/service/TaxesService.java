@@ -6,7 +6,6 @@ import test.maksim.taxes.domain.dto.InputProductData;
 import test.maksim.taxes.domain.dto.OutputProductData;
 import test.maksim.taxes.domain.dto.TaxesCalculationResponse;
 import test.maksim.taxes.ws.calculator.TaxesCalculator;
-import test.maksim.taxes.ws.calculator.TotalPriceCalculator;
 
 import java.util.List;
 
@@ -17,7 +16,6 @@ import static java.util.stream.Collectors.toList;
 public class TaxesService {
 
     private final TaxesCalculator taxesCalculator;
-    private final TotalPriceCalculator totalPriceCalculator;
 
     public TaxesCalculationResponse calculateTaxes(List<InputProductData> productDataList) {
         List<OutputProductData> outputProductDataList = productDataList.stream()
@@ -26,8 +24,6 @@ public class TaxesService {
 
         return TaxesCalculationResponse.builder()
                 .products(outputProductDataList)
-                .totalTaxes(totalPriceCalculator.calculateTaxes(outputProductDataList))
-                .totalPrice(totalPriceCalculator.calculatePrice(outputProductDataList))
                 .build();
     }
 
