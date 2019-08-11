@@ -1,4 +1,4 @@
-package test.maksim.taxes.ws.ws;
+package test.maksim.taxes.ws;
 
 import io.swagger.annotations.Api;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +28,7 @@ public class SwaggerConfig {
 
     @Bean
     public ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Example Service")
+        return new ApiInfoBuilder().title("Taxes calculation Service")
                                    .build();
     }
 

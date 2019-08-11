@@ -5,6 +5,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class Endpoints {
 
-    private static final String V1_PREFIX = "/v1";
+    public static final String V1_PREFIX = "/v1";
+    public static final String CALCULATE = "/calculate";
 
 }
