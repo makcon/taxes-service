@@ -1,4 +1,4 @@
-package test.maksim.taxes.ws.client;
+package test.maksim.taxes.client;
 
 public class TaxesServiceClientUsage {
 

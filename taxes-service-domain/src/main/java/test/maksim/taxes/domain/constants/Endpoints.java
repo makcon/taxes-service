@@ -1,4 +1,4 @@
-package test.maksim.example.domain.constants;
+package test.maksim.taxes.domain.constants;
 
 import lombok.experimental.UtilityClass;
 

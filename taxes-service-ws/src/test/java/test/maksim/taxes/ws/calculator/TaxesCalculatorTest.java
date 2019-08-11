@@ -3,16 +3,16 @@ package test.maksim.taxes.ws.calculator;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
-import test.maksim.example.domain.dto.InputProductData;
-import test.maksim.example.domain.dto.Product;
-import test.maksim.example.domain.dto.ProductCategory;
+import test.maksim.taxes.domain.dto.InputProductData;
+import test.maksim.taxes.domain.dto.Product;
+import test.maksim.taxes.domain.dto.ProductCategory;
 
 import java.util.Set;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static test.maksim.example.domain.dto.ProductCategory.BOOK;
-import static test.maksim.example.domain.dto.ProductCategory.MUSIC;
+import static test.maksim.taxes.domain.dto.ProductCategory.BOOK;
+import static test.maksim.taxes.domain.dto.ProductCategory.MUSIC;
 
 public class TaxesCalculatorTest {
 

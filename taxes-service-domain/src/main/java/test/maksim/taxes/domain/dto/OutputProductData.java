@@ -1,4 +1,4 @@
-package test.maksim.example.domain.dto;
+package test.maksim.taxes.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Product {
+public class OutputProductData {
 
-    private String name;
-    private ProductCategory category;
-    private boolean imported;
+    private InputProductData productData;
+    private double itemTaxes;
 }

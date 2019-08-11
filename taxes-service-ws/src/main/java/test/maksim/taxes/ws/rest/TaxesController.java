@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import test.maksim.example.domain.constants.Endpoints;
-import test.maksim.example.domain.dto.InputProductData;
-import test.maksim.example.domain.dto.TaxesCalculationResponse;
+import test.maksim.taxes.domain.constants.Endpoints;
+import test.maksim.taxes.domain.dto.InputProductData;
+import test.maksim.taxes.domain.dto.TaxesCalculationResponse;
 import test.maksim.taxes.ws.service.TaxesService;
 
 import java.util.List;

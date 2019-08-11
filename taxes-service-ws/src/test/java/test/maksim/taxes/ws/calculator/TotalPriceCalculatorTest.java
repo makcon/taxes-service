@@ -1,8 +1,8 @@
 package test.maksim.taxes.ws.calculator;
 
 import org.junit.Test;
-import test.maksim.example.domain.dto.InputProductData;
-import test.maksim.example.domain.dto.OutputProductData;
+import test.maksim.taxes.domain.dto.InputProductData;
+import test.maksim.taxes.domain.dto.OutputProductData;
 
 import java.util.List;
 

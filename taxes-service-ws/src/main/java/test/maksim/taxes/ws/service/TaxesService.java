@@ -2,9 +2,9 @@ package test.maksim.taxes.ws.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import test.maksim.example.domain.dto.InputProductData;
-import test.maksim.example.domain.dto.OutputProductData;
-import test.maksim.example.domain.dto.TaxesCalculationResponse;
+import test.maksim.taxes.domain.dto.InputProductData;
+import test.maksim.taxes.domain.dto.OutputProductData;
+import test.maksim.taxes.domain.dto.TaxesCalculationResponse;
 import test.maksim.taxes.ws.calculator.TaxesCalculator;
 import test.maksim.taxes.ws.calculator.TotalPriceCalculator;
 

@@ -1,9 +1,9 @@
-package test.maksim.taxes.ws.client.impl;
+package test.maksim.taxes.client.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import lombok.Builder;
-import test.maksim.taxes.ws.client.TaxesServiceClient;
+import test.maksim.taxes.client.TaxesServiceClient;
 
 import java.lang.reflect.Type;
 import java.net.URI;

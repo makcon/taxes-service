@@ -1,4 +1,4 @@
-package test.maksim.taxes.ws.client;
+package test.maksim.taxes.client;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

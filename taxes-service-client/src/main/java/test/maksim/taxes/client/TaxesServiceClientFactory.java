@@ -1,8 +1,8 @@
-package test.maksim.taxes.ws.client;
+package test.maksim.taxes.client;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import test.maksim.taxes.ws.client.impl.TaxesServiceClientImpl;
+import test.maksim.taxes.client.impl.TaxesServiceClientImpl;
 
 import java.net.http.HttpClient;
 

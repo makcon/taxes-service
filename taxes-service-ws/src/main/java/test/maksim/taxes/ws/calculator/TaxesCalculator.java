@@ -2,9 +2,9 @@ package test.maksim.taxes.ws.calculator;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import test.maksim.example.domain.dto.InputProductData;
-import test.maksim.example.domain.dto.Product;
-import test.maksim.example.domain.dto.ProductCategory;
+import test.maksim.taxes.domain.dto.InputProductData;
+import test.maksim.taxes.domain.dto.Product;
+import test.maksim.taxes.domain.dto.ProductCategory;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

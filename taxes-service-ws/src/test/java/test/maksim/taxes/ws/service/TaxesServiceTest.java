@@ -5,10 +5,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import test.maksim.example.domain.dto.InputProductData;
-import test.maksim.example.domain.dto.OutputProductData;
-import test.maksim.example.domain.dto.Product;
-import test.maksim.example.domain.dto.TaxesCalculationResponse;
+import test.maksim.taxes.domain.dto.InputProductData;
+import test.maksim.taxes.domain.dto.OutputProductData;
+import test.maksim.taxes.domain.dto.Product;
+import test.maksim.taxes.domain.dto.TaxesCalculationResponse;
 import test.maksim.taxes.ws.calculator.TaxesCalculator;
 import test.maksim.taxes.ws.calculator.TotalPriceCalculator;
 

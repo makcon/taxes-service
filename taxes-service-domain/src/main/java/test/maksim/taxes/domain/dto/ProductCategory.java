@@ -1,4 +1,4 @@
-package test.maksim.example.domain.dto;
+package test.maksim.taxes.domain.dto;
 
 public enum ProductCategory {
 

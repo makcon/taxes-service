@@ -1,7 +1,7 @@
 package test.maksim.taxes.ws.calculator;
 
 import org.springframework.stereotype.Component;
-import test.maksim.example.domain.dto.OutputProductData;
+import test.maksim.taxes.domain.dto.OutputProductData;
 
 import java.util.List;
 
