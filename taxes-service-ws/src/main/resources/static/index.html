@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search web</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div id="app">
+    <div class="container-fluid">
+        <h3>Welcome to tax calculation service</h3>
+
+        <div class="row">
+            <div class="col-8">
+                <add-product v-for="inputProduct in inputProducts" :input-product="inputProduct"></add-product>
+                <button class="btn btn-outline-primary" @click="addProduct">Add product</button>
+                <button class="btn btn-primary" @click="calculate">Calculate taxes</button>
+                <button class="btn btn-outline-secondary" @click="clear">Clear</button>
+            </div>
+            <div class="col-4">
+                <div v-show="showReceipt">
+                    <h4>Receipt</h4>
+                    <div class="mt2">
+                        <div v-for="product in receipt.products">
+                            {{buildProductLine(product)}}
+                        </div>
+                        <hr/>
+                        <div class="mt1">
+                            <div>Sales taxes: {{receipt.salesTaxes}}</div>
+                            <div>Total: {{receipt.salesTotal}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+
+    Vue.component('add-product', {
+        props: ['inputProduct'],
+        methods: {
+            buildProductName: function (product) {
+                let name = '';
+                if (product.imported) {
+                    name += 'imported ';
+                }
+                if (product.packType) {
+                    name += product.packType.toLowerCase() + ' of '
+                }
+
+                return name + product.name;
+            }
+        },
+        template: '<div class="form-row" style="background-color: #eaeaea; margin: 5px">\n' +
+            '        <div class="form-group col-6">\n' +
+            '           <label>Product</label>\n' +
+            '           <select v-model="inputProduct.selected" class="form-control" >\n' +
+            '               <option v-for="product in inputProduct.products" :value="product.id">{{buildProductName(product)}}</option>\n' +
+            '           </select>\n' +
+            '        </div>\n' +
+            '        <div class="form-group col-md-2">\n' +
+            '           <label>Price</label>\n' +
+            '            <input v-model="inputProduct.price" type="text" placeholder="price" class="form-control" id="inputPrice">\n' +
+            '        </div>\n' +
+            '        <div class="form-group col-md-2">\n' +
+            '           <label>Quantity</label>\n' +
+            '            <input v-model="inputProduct.quantity" type="text" placeholder="quantity" class="form-control" id="inputQuantity">\n' +
+            '        </div>\n' +
+            '    </div>'
+    });
+
+    new Vue({
+        el: '#app',
+        data: {
+            showReceipt: false,
+            receipt: {},
+            inputProducts: [],
+            products: []
+        },
+        created: function () {
+            axios.get('/v1/products')
+                .then(response => {
+                    this.products = response.data;
+                    this.addProduct();
+                });
+        },
+        methods: {
+            addProduct: function () {
+                this.inputProducts.push({
+                    products: this.products,
+                    selected: this.products[0].id,
+                    price: 1.0,
+                    quantity: 1
+                });
+            },
+            calculate: function () {
+                let inputProductDataList = this.inputProducts.map(it => {
+                    let product = this.products.find(product => it.selected === product.id);
+
+                    return {
+                        product: product,
+                        price: it.price,
+                        quantity: it.quantity
+                    }
+                });
+
+                axios.post('/v1/calculate', inputProductDataList)
+                    .then(response => {
+                        this.showReceipt = true;
+
+                        let data = response.data;
+                        this.receipt = {
+                            products: data.products,
+                            salesTaxes: data.salesTaxes,
+                            salesTotal: data.salesTotal,
+                        }
+                    })
+            },
+            buildProductLine: function (product) {
+                let name = product.productData.quantity + ' ';
+                if (product.productData.product.imported) {
+                    name += 'imported ';
+                }
+                if (product.productData.product.packType) {
+                    name += product.productData.product.packType.toLowerCase() + ' of '
+                }
+
+                return name + product.productData.product.name + ': ' + product.totalPrice;
+            },
+            clear: function () {
+                this.showReceipt = false;
+                this.inputProducts = [];
+                this.addProduct();
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>
