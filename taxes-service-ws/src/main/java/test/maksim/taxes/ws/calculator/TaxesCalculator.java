@@ -5,9 +5,8 @@ import org.springframework.stereotype.Component;
 import test.maksim.taxes.domain.dto.InputProductData;
 import test.maksim.taxes.domain.dto.Product;
 import test.maksim.taxes.domain.dto.ProductCategory;
+import test.maksim.taxes.domain.utils.NumberUtils;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Set;
 
 @Component
@@ -19,20 +18,20 @@ public class TaxesCalculator {
     private double taxRate;
     @Value("${tax.rate.imported:.05}")
     private double taxRateImported;
+    @Value("${tax.nearest.round:.05}")
+    private double taxNearestRound;
 
     public double calculate(InputProductData productData) {
         Product product = productData.getProduct();
 
         double taxes = exemptionsCategories.contains(product.getCategory())
-                ? 0.0
+                ? 0
                 : taxRate * productData.getPrice();
 
         if (product.isImported()) {
-            taxes = productData.getPrice() * taxRateImported + taxes;
+            taxes = taxRateImported * productData.getPrice() + taxes;
         }
 
-        return new BigDecimal(Double.toString(taxes))
-                .setScale(2, RoundingMode.HALF_UP)
-                .doubleValue();
+        return NumberUtils.roundUpTo(taxNearestRound, taxes);
     }
 }

@@ -25,6 +25,7 @@ public class TaxesCalculatorTest {
         ReflectionTestUtils.setField(calculator, "exemptionsCategories", Set.of(BOOK));
         ReflectionTestUtils.setField(calculator, "taxRate", 0.1);
         ReflectionTestUtils.setField(calculator, "taxRateImported", 0.05);
+        ReflectionTestUtils.setField(calculator, "taxNearestRound", 0.05);
     }
 
     @Test

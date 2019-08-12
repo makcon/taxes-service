@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import test.maksim.taxes.domain.utils.NumberUtils;
 
 import java.util.Objects;
 
@@ -30,9 +31,9 @@ public class OutputProductData {
         public OutputProductData build() {
             Objects.requireNonNull(super.productData, "ProductData must be not null");
 
-            itemPrice(super.itemTaxes + super.productData.getPrice());
-            totalTaxes(super.itemTaxes * super.productData.getQuantity());
-            totalPrice(super.itemPrice * super.productData.getQuantity());
+            itemPrice(NumberUtils.scale(super.itemTaxes + super.productData.getPrice()));
+            totalTaxes(NumberUtils.scale(super.itemTaxes * super.productData.getQuantity()));
+            totalPrice(NumberUtils.scale(super.itemPrice * super.productData.getQuantity()));
 
             return super.build();
         }
