@@ -14,4 +14,5 @@ public class Product {
     private String name;
     private ProductCategory category;
     private boolean imported;
+    private PackType packType;
 }

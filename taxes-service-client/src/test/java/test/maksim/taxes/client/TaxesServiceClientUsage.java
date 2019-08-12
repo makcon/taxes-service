@@ -24,10 +24,10 @@ public class TaxesServiceClientUsage {
                 .category(FOOD)
                 .imported(true)
                 .name("chocolates")
+                .packType(PackType.BOX)
                 .build();
 
         return InputProductData.builder()
-                .packType(PackType.BOX)
                 .product(product)
                 .price(10.0)
                 .quantity(2)

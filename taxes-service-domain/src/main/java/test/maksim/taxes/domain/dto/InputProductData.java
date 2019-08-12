@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 public class InputProductData {
 
     private Product product;
-    private PackType packType;
     private double price;
     private int quantity;
 }
